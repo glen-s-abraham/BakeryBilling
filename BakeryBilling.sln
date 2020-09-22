@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakeryBilling", "BakeryBilling.csproj", "{F63E5081-6156-4676-B85A-DD90E5F95450}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F08C99FC-6448-43DF-81FA-98C0E0D25479}"
+	ProjectSection(SolutionItems) = preProject
+		Refer.txt = Refer.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F63E5081-6156-4676-B85A-DD90E5F95450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63E5081-6156-4676-B85A-DD90E5F95450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63E5081-6156-4676-B85A-DD90E5F95450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63E5081-6156-4676-B85A-DD90E5F95450}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {987B9661-4F5D-4B43-A0DC-4C9C2503A7FD}
+	EndGlobalSection
+EndGlobal

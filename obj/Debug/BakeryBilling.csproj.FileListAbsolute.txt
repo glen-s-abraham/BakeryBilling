@@ -1,0 +1,10 @@
+C:\Users\Glen\source\repos\BakeryBilling\bin\Debug\BakeryBilling.exe.config
+C:\Users\Glen\source\repos\BakeryBilling\bin\Debug\BakeryBilling.exe
+C:\Users\Glen\source\repos\BakeryBilling\bin\Debug\BakeryBilling.pdb
+C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.csprojAssemblyReference.cache
+C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.frmMain.resources
+C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.Properties.Resources.resources
+C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.csproj.GenerateResource.cache
+C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.csproj.CoreCompileInputs.cache
+C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.exe
+C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.pdb

@@ -1,0 +1,3 @@
+add-> using System.Configuration;
+
+Connection string->var connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
