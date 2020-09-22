@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,10 +39,15 @@
             this.txt_mrp = new System.Windows.Forms.TextBox();
             this.txt_sprice = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.grdItems = new System.Windows.Forms.DataGridView();
             this.txt_id = new System.Windows.Forms.TextBox();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_totalmrp = new System.Windows.Forms.Label();
+            this.lbl_ourtotal = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +55,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(34, 31);
+            this.label1.Location = new System.Drawing.Point(24, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 18);
             this.label1.TabIndex = 0;
@@ -58,7 +65,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(245, 31);
+            this.label2.Location = new System.Drawing.Point(229, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 18);
             this.label2.TabIndex = 1;
@@ -68,7 +75,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(393, 30);
+            this.label3.Location = new System.Drawing.Point(374, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 18);
             this.label3.TabIndex = 2;
@@ -78,7 +85,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(559, 29);
+            this.label4.Location = new System.Drawing.Point(529, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 18);
             this.label4.TabIndex = 3;
@@ -89,7 +96,7 @@
             this.cmb_items.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmb_items.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.cmb_items.FormattingEnabled = true;
-            this.cmb_items.Location = new System.Drawing.Point(77, 23);
+            this.cmb_items.Location = new System.Drawing.Point(67, 23);
             this.cmb_items.Name = "cmb_items";
             this.cmb_items.Size = new System.Drawing.Size(156, 35);
             this.cmb_items.TabIndex = 4;
@@ -99,7 +106,7 @@
             // txt_qty
             // 
             this.txt_qty.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txt_qty.Location = new System.Drawing.Point(282, 23);
+            this.txt_qty.Location = new System.Drawing.Point(266, 22);
             this.txt_qty.Name = "txt_qty";
             this.txt_qty.Size = new System.Drawing.Size(100, 35);
             this.txt_qty.TabIndex = 5;
@@ -107,7 +114,7 @@
             // txt_mrp
             // 
             this.txt_mrp.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txt_mrp.Location = new System.Drawing.Point(442, 22);
+            this.txt_mrp.Location = new System.Drawing.Point(423, 23);
             this.txt_mrp.Name = "txt_mrp";
             this.txt_mrp.Size = new System.Drawing.Size(100, 35);
             this.txt_mrp.TabIndex = 6;
@@ -115,7 +122,7 @@
             // txt_sprice
             // 
             this.txt_sprice.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txt_sprice.Location = new System.Drawing.Point(621, 22);
+            this.txt_sprice.Location = new System.Drawing.Point(591, 23);
             this.txt_sprice.Name = "txt_sprice";
             this.txt_sprice.Size = new System.Drawing.Size(100, 35);
             this.txt_sprice.TabIndex = 7;
@@ -126,25 +133,27 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(786, 23);
+            this.button1.Location = new System.Drawing.Point(705, 23);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 35);
             this.button1.TabIndex = 8;
             this.button1.Text = "ADD";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_delete
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(867, 24);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 35);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "DEL";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btn_delete.ForeColor = System.Drawing.Color.White;
+            this.btn_delete.Location = new System.Drawing.Point(786, 24);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(75, 35);
+            this.btn_delete.TabIndex = 9;
+            this.btn_delete.Text = "DEL";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // button3
             // 
@@ -152,7 +161,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(948, 24);
+            this.button3.Location = new System.Drawing.Point(962, 24);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 35);
             this.button3.TabIndex = 10;
@@ -161,19 +170,94 @@
             // 
             // grdItems
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdItems.Location = new System.Drawing.Point(37, 89);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdItems.DefaultCellStyle = dataGridViewCellStyle2;
+            this.grdItems.Location = new System.Drawing.Point(27, 89);
             this.grdItems.MultiSelect = false;
             this.grdItems.Name = "grdItems";
-            this.grdItems.Size = new System.Drawing.Size(986, 416);
+            this.grdItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdItems.Size = new System.Drawing.Size(1010, 383);
             this.grdItems.TabIndex = 11;
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(37, 64);
+            this.txt_id.Location = new System.Drawing.Point(27, 64);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(34, 20);
             this.txt_id.TabIndex = 12;
+            this.txt_id.Text = "0";
+            this.txt_id.Visible = false;
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancel.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btn_cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_cancel.Location = new System.Drawing.Point(867, 24);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(89, 35);
+            this.btn_cancel.TabIndex = 13;
+            this.btn_cancel.Text = "CANCEL";
+            this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(26, 492);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(121, 27);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Total MRP";
+            // 
+            // lbl_totalmrp
+            // 
+            this.lbl_totalmrp.AutoSize = true;
+            this.lbl_totalmrp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
+            this.lbl_totalmrp.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lbl_totalmrp.Location = new System.Drawing.Point(153, 489);
+            this.lbl_totalmrp.Name = "lbl_totalmrp";
+            this.lbl_totalmrp.Size = new System.Drawing.Size(31, 32);
+            this.lbl_totalmrp.TabIndex = 15;
+            this.lbl_totalmrp.Text = "0";
+            // 
+            // lbl_ourtotal
+            // 
+            this.lbl_ourtotal.AutoSize = true;
+            this.lbl_ourtotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
+            this.lbl_ourtotal.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lbl_ourtotal.Location = new System.Drawing.Point(452, 491);
+            this.lbl_ourtotal.Name = "lbl_ourtotal";
+            this.lbl_ourtotal.Size = new System.Drawing.Size(31, 32);
+            this.lbl_ourtotal.TabIndex = 17;
+            this.lbl_ourtotal.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(325, 494);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 27);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Our Price";
             // 
             // frmBill
             // 
@@ -181,10 +265,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1059, 539);
+            this.Controls.Add(this.lbl_ourtotal);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbl_totalmrp);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.grdItems);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_sprice);
             this.Controls.Add(this.txt_mrp);
@@ -214,9 +303,14 @@
         private System.Windows.Forms.TextBox txt_mrp;
         private System.Windows.Forms.TextBox txt_sprice;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView grdItems;
         private System.Windows.Forms.TextBox txt_id;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_totalmrp;
+        private System.Windows.Forms.Label lbl_ourtotal;
+        private System.Windows.Forms.Label label7;
     }
 }
