@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@
             this.txt_sprice = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_print = new System.Windows.Forms.Button();
             this.grdItems = new System.Windows.Forms.DataGridView();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -48,6 +48,8 @@
             this.lbl_totalmrp = new System.Windows.Forms.Label();
             this.lbl_ourtotal = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.Bill = new System.Drawing.Printing.PrintDocument();
+            this.PrintView = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.grdItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,41 +157,43 @@
             this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
-            // button3
+            // btn_print
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(962, 24);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 35);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "PRINT";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_print.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
+            this.btn_print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_print.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btn_print.ForeColor = System.Drawing.Color.White;
+            this.btn_print.Location = new System.Drawing.Point(962, 24);
+            this.btn_print.Name = "btn_print";
+            this.btn_print.Size = new System.Drawing.Size(75, 35);
+            this.btn_print.TabIndex = 10;
+            this.btn_print.Text = "PRINT";
+            this.btn_print.UseVisualStyleBackColor = false;
+            this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
             // grdItems
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.grdItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdItems.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdItems.DefaultCellStyle = dataGridViewCellStyle6;
             this.grdItems.Location = new System.Drawing.Point(27, 89);
             this.grdItems.MultiSelect = false;
             this.grdItems.Name = "grdItems";
+            this.grdItems.ReadOnly = true;
             this.grdItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdItems.Size = new System.Drawing.Size(1010, 383);
             this.grdItems.TabIndex = 11;
@@ -259,6 +263,10 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Our Price";
             // 
+            // Bill
+            // 
+            this.Bill.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.Bill_PrintPage);
+            // 
             // frmBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,7 +280,7 @@
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.grdItems);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_print);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_sprice);
@@ -304,7 +312,7 @@
         private System.Windows.Forms.TextBox txt_sprice;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.DataGridView grdItems;
         private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Button btn_cancel;
@@ -312,5 +320,7 @@
         private System.Windows.Forms.Label lbl_totalmrp;
         private System.Windows.Forms.Label lbl_ourtotal;
         private System.Windows.Forms.Label label7;
+        private System.Drawing.Printing.PrintDocument Bill;
+        private System.Windows.Forms.PrintDialog PrintView;
     }
 }
