@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
-
+using System.Drawing.Text;
 
 namespace BakeryBilling
 {
@@ -196,12 +196,86 @@ namespace BakeryBilling
 
         private void btn_print_Click(object sender, EventArgs e)
         {
+            
+            string date = dt_bill.Text;
+            string billid="0";
+            //Create a new bill entry
+            
+            try
+            {
+                string query = "INSERT INTO BILLS(B_DATE,TOT_MRP,TOT_SPRICE) VALUES('" + date + "'," + total_mrp.ToString() + "," + total_sprice.ToString() + ")";
+                billCmd = new OleDbCommand(query, conn);
+                billAdapter = new OleDbDataAdapter();
+                billAdapter.InsertCommand = billCmd;
+                billAdapter.InsertCommand.ExecuteNonQuery();
+                billCmd.Dispose();
+                billAdapter.Dispose();
+
+                
+                //Get the latest bill entry
+                query = "SELECT TOP 1 ID FROM BILLS ORDER BY ID DESC";
+                billCmd = new OleDbCommand(query, conn);
+                billAdapter = new OleDbDataAdapter();
+                billTable = new DataTable();
+                billAdapter.SelectCommand = billCmd;
+                billAdapter.Fill(billTable);
+                
+                foreach(DataRow row in billTable.Rows)
+                {
+                    billid = row["ID"].ToString();
+                }
+                billCmd.Dispose();
+                billAdapter.Dispose();
+                billTable.Dispose();
+
+                //Add bill items to the bill items table
+               
+                foreach(Items item in itemList)
+                {
+                    query = "INSERT INTO BILLED_ITEMS(BILL_ID,ITEM_NAME,BILL_MRP,BILL_SPRICE,BILL_QTY) VALUES(" + billid + ",'" + item.name + "'," + item.tot_mrp.ToString() + "," + item.tot_sprice.ToString() + "," + item.qty.ToString() + ")";
+                    billCmd = new OleDbCommand(query, conn);
+                    billAdapter = new OleDbDataAdapter();
+                    billAdapter.InsertCommand = billCmd;
+                    billAdapter.InsertCommand.ExecuteNonQuery();
+                    billCmd.Dispose();
+                    billAdapter.Dispose();
+                    
+            
+
+                }
+                //update stocks
+                foreach(Items item in itemList)
+                {
+                    query = "UPDATE PRODUCTS SET QTY=QTY-"+item.qty.ToString()+" WHERE ID="+item.id+" AND P_NAME='"+item.name+"'";
+                    productCmd = new OleDbCommand(query, conn);
+                    productAdapter = new OleDbDataAdapter();
+                    productAdapter.UpdateCommand = productCmd;
+                    productAdapter.UpdateCommand.ExecuteNonQuery();
+                    productAdapter.Dispose();
+                    productCmd.Dispose();
+                }
+
+
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+
+
+            
             listIndex = 0;
             itemPerPage = 0;
             PrintPreviewDialog printPreview = new PrintPreviewDialog();
             printPreview.Document = Bill;
             printPreview.Show();
+
             //Bill.Print();
+            
+            refresh_product_combo();
+            
             
         }
 
@@ -210,6 +284,11 @@ namespace BakeryBilling
 
             clear_billing();
             update_totals();
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            refresh_product_combo();
         }
 
         private void cmb_items_TextChanged(object sender, EventArgs e)
@@ -244,7 +323,21 @@ namespace BakeryBilling
             try
             {
                 conn.Open();
-                productCmd = new OleDbCommand("SELECT ID,P_NAME FROM PRODUCTS",conn);
+                refresh_product_combo();
+
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+        private void refresh_product_combo()
+        {
+            try
+            {
+                productCmd = new OleDbCommand("SELECT ID,P_NAME FROM PRODUCTS WHERE QTY>0", conn);
                 productAdapter = new OleDbDataAdapter();
                 productAdapter.SelectCommand = productCmd;
                 productTable = new DataTable();
@@ -255,14 +348,11 @@ namespace BakeryBilling
                 cmb_items.DisplayMember = "P_NAME";
                 cmb_items.ValueMember = "ID";
                 cmb_items.SelectedIndex = -1;
-
-
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
     }
 }
