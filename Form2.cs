@@ -50,38 +50,43 @@ namespace BakeryBilling
 
         private void cmb_items_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var id = cmb_items.SelectedValue;
-            txt_id.Text = "0";
-            txt_mrp.Text = "";
-            txt_sprice.Text = "";
-            txt_qty.Text = "";
-            try
+            if (cmb_items.SelectedValue!=null)
             {
-                string query = "SELECT ID,MRP,SPRICE FROM PRODUCTS WHERE ID=" + id;
-                productCmd = new OleDbCommand(query, conn);
-                productAdapter = new OleDbDataAdapter();
-                productAdapter.SelectCommand = productCmd;
-                DataTable localProductTable = new DataTable();
-                productAdapter.Fill(localProductTable);
-                if (localProductTable.Rows.Count>0)
+                var id = cmb_items.SelectedValue;
+                
+                txt_id.Text = "0";
+                txt_mrp.Text = "";
+                txt_sprice.Text = "";
+                txt_qty.Text = "";
+                try
                 {
-                    foreach(DataRow row in localProductTable.Rows)
+                    string query = "SELECT ID,MRP,SPRICE FROM PRODUCTS WHERE ID=" + id;
+                    productCmd = new OleDbCommand(query, conn);
+                    productAdapter = new OleDbDataAdapter();
+                    productAdapter.SelectCommand = productCmd;
+                    DataTable localProductTable = new DataTable();
+                    productAdapter.Fill(localProductTable);
+                    if (localProductTable.Rows.Count > 0)
                     {
-                        txt_id.Text= row["ID"].ToString();
-                        txt_mrp.Text = row["MRP"].ToString();
-                        txt_sprice.Text = row["Sprice"].ToString();
-                    }
-                    
-                }
-                productAdapter.Dispose();
-                productCmd.Dispose();
-                localProductTable.Dispose();
+                        foreach (DataRow row in localProductTable.Rows)
+                        {
+                            txt_id.Text = row["ID"].ToString();
+                            txt_mrp.Text = row["MRP"].ToString();
+                            txt_sprice.Text = row["Sprice"].ToString();
+                        }
 
+                    }
+                    productAdapter.Dispose();
+                    productCmd.Dispose();
+                    localProductTable.Dispose();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
             
 
 
@@ -196,85 +201,92 @@ namespace BakeryBilling
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            
-            string date = dt_bill.Text;
-            string billid="0";
-            //Create a new bill entry
-            
-            try
+            if(itemList.Count>0)
             {
-                string query = "INSERT INTO BILLS(B_DATE,TOT_MRP,TOT_SPRICE) VALUES('" + date + "'," + total_mrp.ToString() + "," + total_sprice.ToString() + ")";
-                billCmd = new OleDbCommand(query, conn);
-                billAdapter = new OleDbDataAdapter();
-                billAdapter.InsertCommand = billCmd;
-                billAdapter.InsertCommand.ExecuteNonQuery();
-                billCmd.Dispose();
-                billAdapter.Dispose();
+                string date = dt_bill.Text;
+                string billid = "0";
+                //Create a new bill entry
 
-                
-                //Get the latest bill entry
-                query = "SELECT TOP 1 ID FROM BILLS ORDER BY ID DESC";
-                billCmd = new OleDbCommand(query, conn);
-                billAdapter = new OleDbDataAdapter();
-                billTable = new DataTable();
-                billAdapter.SelectCommand = billCmd;
-                billAdapter.Fill(billTable);
-                
-                foreach(DataRow row in billTable.Rows)
+                try
                 {
-                    billid = row["ID"].ToString();
-                }
-                billCmd.Dispose();
-                billAdapter.Dispose();
-                billTable.Dispose();
-
-                //Add bill items to the bill items table
-               
-                foreach(Items item in itemList)
-                {
-                    query = "INSERT INTO BILLED_ITEMS(BILL_ID,ITEM_NAME,BILL_MRP,BILL_SPRICE,BILL_QTY) VALUES(" + billid + ",'" + item.name + "'," + item.tot_mrp.ToString() + "," + item.tot_sprice.ToString() + "," + item.qty.ToString() + ")";
+                    string query = "INSERT INTO BILLS(B_DATE,TOT_MRP,TOT_SPRICE) VALUES('" + date + "'," + total_mrp.ToString() + "," + total_sprice.ToString() + ")";
                     billCmd = new OleDbCommand(query, conn);
                     billAdapter = new OleDbDataAdapter();
                     billAdapter.InsertCommand = billCmd;
                     billAdapter.InsertCommand.ExecuteNonQuery();
                     billCmd.Dispose();
                     billAdapter.Dispose();
-                    
-            
+
+
+                    //Get the latest bill entry
+                    query = "SELECT TOP 1 ID FROM BILLS ORDER BY ID DESC";
+                    billCmd = new OleDbCommand(query, conn);
+                    billAdapter = new OleDbDataAdapter();
+                    billTable = new DataTable();
+                    billAdapter.SelectCommand = billCmd;
+                    billAdapter.Fill(billTable);
+
+                    foreach (DataRow row in billTable.Rows)
+                    {
+                        billid = row["ID"].ToString();
+                    }
+                    billCmd.Dispose();
+                    billAdapter.Dispose();
+                    billTable.Dispose();
+
+                    //Add bill items to the bill items table
+
+                    foreach (Items item in itemList)
+                    {
+                        query = "INSERT INTO BILLED_ITEMS(BILL_ID,ITEM_NAME,BILL_MRP,BILL_SPRICE,BILL_QTY) VALUES(" + billid + ",'" + item.name + "'," + item.tot_mrp.ToString() + "," + item.tot_sprice.ToString() + "," + item.qty.ToString() + ")";
+                        billCmd = new OleDbCommand(query, conn);
+                        billAdapter = new OleDbDataAdapter();
+                        billAdapter.InsertCommand = billCmd;
+                        billAdapter.InsertCommand.ExecuteNonQuery();
+                        billCmd.Dispose();
+                        billAdapter.Dispose();
+
+
+
+                    }
+                    //update stocks
+                    foreach (Items item in itemList)
+                    {
+                        query = "UPDATE PRODUCTS SET QTY=QTY-" + item.qty.ToString() + " WHERE ID=" + item.id + " AND P_NAME='" + item.name + "'";
+                        productCmd = new OleDbCommand(query, conn);
+                        productAdapter = new OleDbDataAdapter();
+                        productAdapter.UpdateCommand = productCmd;
+                        productAdapter.UpdateCommand.ExecuteNonQuery();
+                        productAdapter.Dispose();
+                        productCmd.Dispose();
+                    }
+
+
 
                 }
-                //update stocks
-                foreach(Items item in itemList)
+                catch (Exception ex)
                 {
-                    query = "UPDATE PRODUCTS SET QTY=QTY-"+item.qty.ToString()+" WHERE ID="+item.id+" AND P_NAME='"+item.name+"'";
-                    productCmd = new OleDbCommand(query, conn);
-                    productAdapter = new OleDbDataAdapter();
-                    productAdapter.UpdateCommand = productCmd;
-                    productAdapter.UpdateCommand.ExecuteNonQuery();
-                    productAdapter.Dispose();
-                    productCmd.Dispose();
+                    MessageBox.Show(ex.Message);
                 }
 
 
 
+
+                listIndex = 0;
+                itemPerPage = 0;
+                PrintPreviewDialog printPreview = new PrintPreviewDialog();
+                printPreview.Document = Bill;
+                printPreview.Show();
+
+                //Bill.Print();
+
+                refresh_product_combo();
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Noting to print");
             }
             
-
-
-            
-            listIndex = 0;
-            itemPerPage = 0;
-            PrintPreviewDialog printPreview = new PrintPreviewDialog();
-            printPreview.Document = Bill;
-            printPreview.Show();
-
-            //Bill.Print();
-            
-            refresh_product_combo();
             
             
         }
@@ -288,7 +300,40 @@ namespace BakeryBilling
 
         private void btn_refresh_Click(object sender, EventArgs e)
         {
+            clear_billing();
+            update_totals();
             refresh_product_combo();
+        }
+
+        private void cmb_items_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            cmb_items_SelectionChangeCommitted(sender, e);
+        }
+
+        private void grdItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                btn_delete_Click(sender, e);
+            }
+        }
+
+        private void validate_number(object sender, KeyPressEventArgs e)
+        {
+            string txtsource = ((TextBox)sender).Name.ToString();
+            
+            if (txtsource == "txt_qty" || txtsource == "txt_mrp"|| txtsource=="txt_sprice")
+            {
+                if (e.KeyChar >= '0' && e.KeyChar <= '9' || e.KeyChar == 8 || e.KeyChar=='.'|| e.KeyChar =='.' )
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
         private void cmb_items_TextChanged(object sender, EventArgs e)
@@ -311,6 +356,11 @@ namespace BakeryBilling
             itemList.Add(new Items() { id = pid, name = pname, qty = qty, mrp=mrp,sprice=sprice,tot_mrp = qty*mrp, tot_sprice = qty*sprice });
             grdItems.DataSource = itemList;
             update_totals();
+            txt_id.Text = "0";
+            txt_mrp.Text = "";
+            txt_sprice.Text = "";
+            txt_qty.Text = "";
+            cmb_items.Focus();
         }
 
         
@@ -323,6 +373,7 @@ namespace BakeryBilling
             try
             {
                 conn.Open();
+                
                 refresh_product_combo();
 
 
@@ -335,6 +386,7 @@ namespace BakeryBilling
         }
         private void refresh_product_combo()
         {
+            cmb_items.SelectedIndexChanged -= cmb_items_SelectedIndexChanged;
             try
             {
                 productCmd = new OleDbCommand("SELECT ID,P_NAME FROM PRODUCTS WHERE QTY>0", conn);
@@ -348,11 +400,20 @@ namespace BakeryBilling
                 cmb_items.DisplayMember = "P_NAME";
                 cmb_items.ValueMember = "ID";
                 cmb_items.SelectedIndex = -1;
+                cmb_items.AutoCompleteMode = AutoCompleteMode.Suggest;
+                cmb_items.AutoCompleteSource = AutoCompleteSource.ListItems;
+
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            cmb_items.SelectedIndexChanged += cmb_items_SelectedIndexChanged;
         }
+        
+
+            
+        
     }
+
 }
