@@ -336,6 +336,12 @@ namespace BakeryBilling
             }
         }
 
+        private void frmBill_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            conn.Close();
+            conn.Dispose();
+        }
+
         private void cmb_items_TextChanged(object sender, EventArgs e)
         {
            
@@ -386,6 +392,7 @@ namespace BakeryBilling
         }
         private void refresh_product_combo()
         {
+            dt_bill.Value = DateTime.Now;
             cmb_items.SelectedIndexChanged -= cmb_items_SelectedIndexChanged;
             try
             {
