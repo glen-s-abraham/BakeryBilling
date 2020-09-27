@@ -8,3 +8,14 @@ C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.csproj.Generate
 C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.csproj.CoreCompileInputs.cache
 C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.exe
 C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.pdb
+F:\BAKERYBILLING\BakeryBilling\bin\Debug\BakeryBilling.exe.config
+F:\BAKERYBILLING\BakeryBilling\bin\Debug\BakeryBilling.exe
+F:\BAKERYBILLING\BakeryBilling\bin\Debug\BakeryBilling.pdb
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.csprojAssemblyReference.cache
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.frmMain.resources
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.Properties.Resources.resources
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.csproj.GenerateResource.cache
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.csproj.CoreCompileInputs.cache
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.exe
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.pdb
+F:\BAKERYBILLING\BakeryBilling\obj\Debug\BakeryBilling.Form3.resources
