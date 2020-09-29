@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@
             this.mrp.Name = "mrp";
             this.mrp.Size = new System.Drawing.Size(158, 20);
             this.mrp.TabIndex = 8;
+            this.mrp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mrp_KeyPress);
             // 
             // label1
             // 
@@ -124,6 +126,7 @@
             this.pname.Size = new System.Drawing.Size(158, 21);
             this.pname.TabIndex = 10;
             this.pname.SelectedIndexChanged += new System.EventHandler(this.pname_SelectedIndexChanged);
+            this.pname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pname_KeyPress);
             // 
             // cprice
             // 
@@ -131,6 +134,7 @@
             this.cprice.Name = "cprice";
             this.cprice.Size = new System.Drawing.Size(158, 20);
             this.cprice.TabIndex = 12;
+            this.cprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cprice_KeyPress);
             // 
             // sprice
             // 
@@ -138,6 +142,8 @@
             this.sprice.Name = "sprice";
             this.sprice.Size = new System.Drawing.Size(158, 20);
             this.sprice.TabIndex = 13;
+            this.sprice.TextChanged += new System.EventHandler(this.sprice_TextChanged);
+            this.sprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sprice_KeyPress);
             // 
             // qty
             // 
@@ -145,6 +151,7 @@
             this.qty.Name = "qty";
             this.qty.Size = new System.Drawing.Size(158, 20);
             this.qty.TabIndex = 14;
+            this.qty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qty_KeyPress);
             // 
             // expdate
             // 
@@ -219,12 +226,22 @@
             // 
             // product_grid
             // 
+            this.product_grid.AllowUserToResizeColumns = false;
+            this.product_grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.product_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.product_grid.DefaultCellStyle = dataGridViewCellStyle1;
             this.product_grid.Location = new System.Drawing.Point(15, 186);
             this.product_grid.Name = "product_grid";
             this.product_grid.Size = new System.Drawing.Size(763, 150);
             this.product_grid.TabIndex = 24;
-            this.product_grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Form3
             // 
