@@ -8,3 +8,14 @@ C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.csproj.Generate
 C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.csproj.CoreCompileInputs.cache
 C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.exe
 C:\Users\Glen\source\repos\BakeryBilling\obj\Debug\BakeryBilling.pdb
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\bin\Debug\BakeryBilling.exe.config
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\bin\Debug\BakeryBilling.exe
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\bin\Debug\BakeryBilling.pdb
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.frmMain.resources
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.Properties.Resources.resources
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.csproj.GenerateResource.cache
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.exe
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.pdb
+C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\Debug\BakeryBilling.Form5.resources
