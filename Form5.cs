@@ -104,65 +104,10 @@ namespace BakeryBilling
 
         int listIndex = 0;
         int itemPerPage = 0;
-        private void Bill_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            
-
-
-            int paperWidth = 1122;
-            int x = 30;
-            int y = 10;
-            Pen pen = new Pen(Brushes.Black);
-            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-
-            int centerX = (int)(x + Math.Abs(paperWidth * 0.5));
-
-            Font H1 = new Font("Arial", 28);
-            Font H2 = new Font("Arial", 16);
-            Font H3 = new Font("Arial", 12);
-            e.Graphics.DrawString("Bakery Name", H1, Brushes.Black, new Point(x + 280, y));
-            y = y + 50;
-            e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
-            y = y + 10;
-            e.Graphics.DrawString("Item", H2, Brushes.Black, new Point(x, y));
-            e.Graphics.DrawString("QTY", H2, Brushes.Black, new Point(x + 100, y));
-            e.Graphics.DrawString("MRP", H2, Brushes.Black, new Point(x + 200, y));
-            e.Graphics.DrawString("OurPrice", H2, Brushes.Black, new Point(x + 300, y));
-            e.Graphics.DrawString("Tot MRP", H2, Brushes.Black, new Point(x + 450, y));
-            e.Graphics.DrawString("Tot Our Price", H2, Brushes.Black, new Point(x + 620, y));
-            y = y + 30;
-            e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
-            y = y + 20;
-            foreach(DataRow rs in print.Rows )
-            {
-
-                e.Graphics.DrawString(rs[listIndex].ToString(), H3, Brushes.Black, new Point(x, y));
-                e.Graphics.DrawString(rs[listIndex].ToString(), H3, Brushes.Black, new Point(x + 110, y));
-                e.Graphics.DrawString(rs[listIndex].ToString(), H3, Brushes.Black, new Point(x + 210, y));
-                e.Graphics.DrawString(rs[listIndex].ToString(), H3, Brushes.Black, new Point(x + 340, y));
-                e.Graphics.DrawString(rs[listIndex].ToString(), H3, Brushes.Black, new Point(x + 480, y));
-                e.Graphics.DrawString(rs[listIndex].ToString(), H3, Brushes.Black, new Point(x + 650, y));
-                y = y + 30;
-                if (itemPerPage < 25)
-                {
-                    e.HasMorePages = false;
-                    itemPerPage += 1;
-
-                }
-                else
-                {
-                    itemPerPage = 0;
-                    listIndex += 1;
-                    e.HasMorePages = true;
-                    return;
-                }
-                listIndex += 1;
-
-
-            }
+       
            
 
-        }
+        
 
 
         public Form5()
@@ -246,8 +191,11 @@ namespace BakeryBilling
         
         private void button3_Click(object sender, EventArgs e)
         {
+
+            listIndex = 0;
+            itemPerPage = 0;
             PrintPreviewDialog printPreview = new PrintPreviewDialog();
-            
+            printPreview.Document = printDocument1;
             printPreview.Show();
         }
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -296,6 +244,94 @@ namespace BakeryBilling
         private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
          
+        }
+
+        private void printDocument1_PrintPage_2(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+            int paperWidth = 1122;
+            int x = 30;
+            int y = 10;
+            Pen pen = new Pen(Brushes.Black);
+            pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+            int centerX = (int)(x + Math.Abs(paperWidth * 0.5));
+
+            Font H1 = new Font("Arial", 28);
+            Font H2 = new Font("Arial", 16);
+            Font H3 = new Font("Arial", 12);
+            e.Graphics.DrawString("Bakery Name", H1, Brushes.Black, new Point(x + 280, y));
+            y = y + 50;
+            e.Graphics.DrawString(comboBox1.Text.ToString() +" REPORT", H2, Brushes.Black, new Point(x, y));
+            e.Graphics.DrawString( "DATE :" + DateTime.Now, H2, Brushes.Black, new Point(x+400, y));
+            y = y + 50;
+            e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
+            y = y + 10;
+            e.Graphics.DrawString("SI No.", H2, Brushes.Black, new Point(x, y));
+            e.Graphics.DrawString("Item", H2, Brushes.Black, new Point(x+70, y));
+            e.Graphics.DrawString("DATE", H2, Brushes.Black, new Point(x + 200, y));
+            e.Graphics.DrawString("QUANTITY", H2, Brushes.Black, new Point(x + 410, y));
+            
+            y = y + 30;
+            e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
+            y = y + 20;
+
+            for (int i = 0; i < print.Rows.Count; i++)
+            {
+                x = 30;
+                for (int j = 0; j < print.Columns.Count; j++)
+                {
+                    
+                    //object o = print.Rows[i].ItemArray[j];
+                    if(j==0)
+                    {
+                        e.Graphics.DrawString((i+1).ToString() + "            " + print.Rows[i].ItemArray[j].ToString(), H3, Brushes.Black, new Point(x, y));
+                    }
+                    else if (j != 2)
+                    {
+                        e.Graphics.DrawString(print.Rows[i].ItemArray[j].ToString(), H3, Brushes.Black, new Point(x, y));
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString( print.Rows[i].ItemArray[j].ToString(), H3, Brushes.Black, new Point(x + 50, y));
+
+                    }
+
+                    x = x + 210;
+                }
+                    
+                    if (itemPerPage < 25)
+                    {
+                        e.HasMorePages = false;
+                        itemPerPage += 1;
+
+                    }
+                    else
+                    {
+                        itemPerPage = 0;
+                        listIndex += 1;
+                        e.HasMorePages = true;
+                        return;
+                    }
+                    listIndex += 1;
+
+                y = y + 30;
+                x = 30;
+
+            }            /*
+            e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
+            y = y + 20;
+            e.Graphics.DrawString("Total MRP", H2, Brushes.Black, new Point(x, y));
+            e.Graphics.DrawString(total_mrp.ToString(), H2, Brushes.Black, new Point(x + 120, y));
+            e.Graphics.DrawString("Our Total Price", H2, Brushes.Black, new Point(x + 200, y));
+            e.Graphics.DrawString(total_sprice.ToString(), H2, Brushes.Black, new Point(x + 350, y));
+            y = y + 30;
+            e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
+            y = y + 20;
+            e.Graphics.DrawString("You save Rs." + (total_mrp - total_sprice).ToString() + " ,Thank you for shopping with us!", H2, Brushes.Black, new Point(x + 150, y));
+
+            */
+
         }
     }
 }
