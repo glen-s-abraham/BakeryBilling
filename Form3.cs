@@ -63,6 +63,7 @@ namespace BakeryBilling
             add.BackColor = Color.FromArgb(229, 32, 88);
             update.BackColor = Color.FromArgb(151, 196, 232);
             delete.BackColor = Color.FromArgb(151, 196, 232);
+            purchase.BackColor = Color.FromArgb(151, 196, 232);
             state_manage();
             
 
@@ -74,6 +75,7 @@ namespace BakeryBilling
             add.BackColor = Color.FromArgb(151, 196, 232);
             update.BackColor = Color.FromArgb(229, 32, 88);
             delete.BackColor = Color.FromArgb(151, 196, 232);
+            purchase.BackColor = Color.FromArgb(151, 196, 232);
             state_manage();
             
         }
@@ -84,14 +86,24 @@ namespace BakeryBilling
             update.BackColor = Color.FromArgb(151, 196, 232);
             add.BackColor = Color.FromArgb(151, 196, 232);
             delete.BackColor = Color.FromArgb(229, 32, 88);
-            ok.Enabled = true;
-            reset.Enabled = true;
-            pname.Enabled = true;
+            purchase.BackColor = Color.FromArgb(151, 196, 232);              
             qty.Enabled = false;
             cprice.Enabled = false;
             sprice.Enabled = false;
             mrp.Enabled = false;
             expdate.Enabled = false;
+        }
+        private void purchase_Click(object sender, EventArgs e)
+        {
+            flag = 4;
+            add.BackColor = Color.FromArgb(151, 196, 232);
+            update.BackColor = Color.FromArgb(151, 196, 232);
+            delete.BackColor = Color.FromArgb(151, 196, 232);
+            purchase.BackColor = Color.FromArgb(229, 32, 88);
+            state_manage1();
+            qty.Enabled = true;           
+            expdate.Enabled = true;
+
         }
         private void state_manage()
         {
@@ -103,6 +115,16 @@ namespace BakeryBilling
             sprice.Enabled = true;
             mrp.Enabled = true;
             expdate.Enabled = true;
+        }
+        private void state_manage1()
+        {
+            ok.Enabled = true;
+            reset.Enabled = true;
+            pname.Enabled = true;
+            cprice.Enabled = false;
+            sprice.Enabled = false;
+            mrp.Enabled = false;
+            
         }
         private void refresh()
         {
@@ -116,14 +138,32 @@ namespace BakeryBilling
         private void grid_view()
         {
             try
-            {
+            { DataSet productset = new DataSet();
                 string query = "SELECT * FROM PRODUCTS ORDER BY(ID) DESC";
                 cmd = new OleDbCommand(query, conn);
                 productadapter = new OleDbDataAdapter();
                 productadapter.SelectCommand = cmd;
                 productadapter.SelectCommand.ExecuteNonQuery();
                 producttable = new DataTable();
-                productadapter.Fill(producttable);
+                productadapter.Fill(productset);
+                producttable = new DataTable();
+                producttable.Columns.Add("Sl.No", typeof(int));
+                producttable.Columns.Add("Product", typeof(string));
+                producttable.Columns.Add("MRP", typeof(double));
+                producttable.Columns.Add("SRP", typeof(int));
+                producttable.Columns.Add("CRP", typeof(int));
+                producttable.Columns.Add("Quantity", typeof(int));
+                producttable.Columns.Add("Expiry", typeof(DateTime));
+                int i = 1;
+
+                foreach(DataTable table in productset.Tables )
+                {
+                    foreach(DataRow dr in table.Rows)
+                    {
+                        producttable.Rows.Add(i, dr["P_NAME"], dr["QTY"], dr["MRP"], dr["SPRICE"], dr["CPRICE"], dr["CUR_EXP_DATE"]);
+                        i++;
+                    }
+                }
                 product_grid.DataSource = producttable;
             }
             catch(Exception ex)
@@ -171,6 +211,8 @@ namespace BakeryBilling
                 MessageBox.Show(ex.Message);
             }
 
+            cmd.Dispose();
+            productadapter.Dispose();
 
         }
 
@@ -263,7 +305,7 @@ namespace BakeryBilling
                             cmd = new OleDbCommand(query, conn);
                             productadapter.UpdateCommand = cmd;
                             productadapter.UpdateCommand.ExecuteNonQuery();
-                            query = "UPDATE PRODUCTS SET CUR_EXP_DATE = '" + DateTime.Parse(expdate.Text) + "',MRP = '" + Double.Parse(mrp.Text) + "',SPRICE ='" + sprice.Text + "',CPRICE ='" + Double.Parse(cprice.Text) + "',QTY=QTY + '" + Double.Parse(qty.Text) + "'  WHERE P_NAME = '" + pname.Text + "'";
+                            query = "UPDATE PRODUCTS SET CUR_EXP_DATE = '" + DateTime.Parse(expdate.Text) + "',MRP = '" + Double.Parse(mrp.Text) + "',SPRICE ='" + sprice.Text + "',CPRICE ='" + Double.Parse(cprice.Text) + "',QTY= '" + Double.Parse(qty.Text) + "'  WHERE P_NAME = '" + pname.Text + "'";
                             cmd = new OleDbCommand(query, conn);
                             productadapter.UpdateCommand = cmd;
                             productadapter.UpdateCommand.ExecuteNonQuery();
@@ -277,20 +319,51 @@ namespace BakeryBilling
                 }
                 else if(flag ==3)
                 {
-                    result = MessageBox.Show("Are you sure want to delete ?", "", MessageBoxButtons.YesNo);
-                    if (result == System.Windows.Forms.DialogResult.Yes)
+                    if (pname.Text != "" && mrp.Text != "" && cprice.Text != "" && sprice.Text != "" && qty.Text != "" && expdate.Text != "")
                     {
-                        query = "DELETE FROM PRODUCTS WHERE P_NAME = '" + pname.Text + "'";
-                        cmd = new OleDbCommand(query, conn);
-                        productadapter.DeleteCommand = cmd;
-                        productadapter.DeleteCommand.ExecuteNonQuery();
+                        result = MessageBox.Show("Are you sure want to delete ?", "", MessageBoxButtons.YesNo);
+                        if (result == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            query = "DELETE FROM PRODUCTS WHERE P_NAME = '" + pname.Text + "'";
+                            cmd = new OleDbCommand(query, conn);
+                            productadapter.DeleteCommand = cmd;
+                            productadapter.DeleteCommand.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("INVALID DATA.");
                     }
 
-                                        
+
 
                 }
-                pname_combo(); 
+                else if(flag == 4)
+                {
+                    if (pname.Text != "" && mrp.Text != "" && cprice.Text != "" && sprice.Text != "" && qty.Text != "" && expdate.Text != "")
+                    {
+                        result = MessageBox.Show("Confirm Purchase ?", "", MessageBoxButtons.YesNo);
+                        if (result == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            query = "UPDATE PRODUCTS SET OLD_EXP_DATE = CUR_EXP_DATE WHERE P_NAME = '" + pname.Text + "'";
+                            cmd = new OleDbCommand(query, conn);
+                            productadapter.UpdateCommand = cmd;
+                            productadapter.UpdateCommand.ExecuteNonQuery();
+                            query = "UPDATE PRODUCTS SET CUR_EXP_DATE = '" + DateTime.Parse(expdate.Text) + "',QTY=QTY + '" + Double.Parse(qty.Text) + "'  WHERE P_NAME = '" + pname.Text + "'";
+                            cmd = new OleDbCommand(query, conn);
+                            productadapter.UpdateCommand = cmd;
+                            productadapter.UpdateCommand.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("FILL PRODUCT DATA.");
+                    }
+
+                }
                 refresh();
+                pname_combo();
+                grid_view();
                 cmd.Dispose();
                 productadapter.Dispose();
             }
@@ -328,11 +401,20 @@ namespace BakeryBilling
 
         private void qty_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '-'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
+        }
+
+        private void reset_Click(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            conn.Close();
         }
     }
 }

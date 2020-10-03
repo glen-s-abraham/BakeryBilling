@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,6 +47,7 @@
             this.delete = new System.Windows.Forms.Button();
             this.update = new System.Windows.Forms.Button();
             this.product_grid = new System.Windows.Forms.DataGridView();
+            this.purchase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,7 +106,7 @@
             this.mrp.Location = new System.Drawing.Point(345, 21);
             this.mrp.Name = "mrp";
             this.mrp.Size = new System.Drawing.Size(158, 20);
-            this.mrp.TabIndex = 8;
+            this.mrp.TabIndex = 2;
             this.mrp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mrp_KeyPress);
             // 
             // label1
@@ -124,7 +125,7 @@
             this.pname.Location = new System.Drawing.Point(68, 23);
             this.pname.Name = "pname";
             this.pname.Size = new System.Drawing.Size(158, 21);
-            this.pname.TabIndex = 10;
+            this.pname.TabIndex = 1;
             this.pname.SelectedIndexChanged += new System.EventHandler(this.pname_SelectedIndexChanged);
             this.pname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pname_KeyPress);
             // 
@@ -133,7 +134,7 @@
             this.cprice.Location = new System.Drawing.Point(609, 21);
             this.cprice.Name = "cprice";
             this.cprice.Size = new System.Drawing.Size(158, 20);
-            this.cprice.TabIndex = 12;
+            this.cprice.TabIndex = 3;
             this.cprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cprice_KeyPress);
             // 
             // sprice
@@ -141,7 +142,7 @@
             this.sprice.Location = new System.Drawing.Point(68, 63);
             this.sprice.Name = "sprice";
             this.sprice.Size = new System.Drawing.Size(158, 20);
-            this.sprice.TabIndex = 13;
+            this.sprice.TabIndex = 4;
             this.sprice.TextChanged += new System.EventHandler(this.sprice_TextChanged);
             this.sprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sprice_KeyPress);
             // 
@@ -150,7 +151,7 @@
             this.qty.Location = new System.Drawing.Point(345, 62);
             this.qty.Name = "qty";
             this.qty.Size = new System.Drawing.Size(158, 20);
-            this.qty.TabIndex = 14;
+            this.qty.TabIndex = 5;
             this.qty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qty_KeyPress);
             // 
             // expdate
@@ -158,7 +159,7 @@
             this.expdate.Location = new System.Drawing.Point(609, 61);
             this.expdate.Name = "expdate";
             this.expdate.Size = new System.Drawing.Size(158, 20);
-            this.expdate.TabIndex = 15;
+            this.expdate.TabIndex = 6;
             // 
             // reset
             // 
@@ -168,9 +169,10 @@
             this.reset.Location = new System.Drawing.Point(419, 99);
             this.reset.Name = "reset";
             this.reset.Size = new System.Drawing.Size(84, 34);
-            this.reset.TabIndex = 16;
+            this.reset.TabIndex = 8;
             this.reset.Text = "RESET";
             this.reset.UseVisualStyleBackColor = false;
+            this.reset.Click += new System.EventHandler(this.reset_Click);
             // 
             // ok
             // 
@@ -180,7 +182,7 @@
             this.ok.Location = new System.Drawing.Point(329, 99);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(84, 34);
-            this.ok.TabIndex = 17;
+            this.ok.TabIndex = 7;
             this.ok.Text = "OK";
             this.ok.UseVisualStyleBackColor = false;
             this.ok.Click += new System.EventHandler(this.ok_Click);
@@ -190,7 +192,7 @@
             this.add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
             this.add.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.add.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.add.Location = new System.Drawing.Point(222, 147);
+            this.add.Location = new System.Drawing.Point(188, 147);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(84, 33);
             this.add.TabIndex = 21;
@@ -203,7 +205,7 @@
             this.delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
             this.delete.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.delete.Location = new System.Drawing.Point(533, 147);
+            this.delete.Location = new System.Drawing.Point(530, 147);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(84, 33);
             this.delete.TabIndex = 22;
@@ -216,7 +218,7 @@
             this.update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
             this.update.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.update.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.update.Location = new System.Drawing.Point(377, 147);
+            this.update.Location = new System.Drawing.Point(293, 147);
             this.update.Name = "update";
             this.update.Size = new System.Drawing.Size(84, 33);
             this.update.TabIndex = 23;
@@ -226,22 +228,41 @@
             // 
             // product_grid
             // 
+            this.product_grid.AllowUserToAddRows = false;
+            this.product_grid.AllowUserToDeleteRows = false;
             this.product_grid.AllowUserToResizeColumns = false;
+            this.product_grid.AllowUserToResizeRows = false;
+            this.product_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.product_grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.product_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.product_grid.DefaultCellStyle = dataGridViewCellStyle1;
-            this.product_grid.Location = new System.Drawing.Point(15, 186);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.product_grid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.product_grid.Location = new System.Drawing.Point(27, 192);
             this.product_grid.Name = "product_grid";
-            this.product_grid.Size = new System.Drawing.Size(763, 150);
+            this.product_grid.ReadOnly = true;
+            this.product_grid.ShowEditingIcon = false;
+            this.product_grid.Size = new System.Drawing.Size(752, 150);
             this.product_grid.TabIndex = 24;
+            // 
+            // purchase
+            // 
+            this.purchase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(196)))), ((int)(((byte)(232)))));
+            this.purchase.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.purchase.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.purchase.Location = new System.Drawing.Point(402, 147);
+            this.purchase.Name = "purchase";
+            this.purchase.Size = new System.Drawing.Size(108, 33);
+            this.purchase.TabIndex = 25;
+            this.purchase.Text = "PURCHASE";
+            this.purchase.UseVisualStyleBackColor = false;
+            this.purchase.Click += new System.EventHandler(this.purchase_Click);
             // 
             // Form3
             // 
@@ -250,6 +271,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 354);
             this.ControlBox = false;
+            this.Controls.Add(this.purchase);
             this.Controls.Add(this.product_grid);
             this.Controls.Add(this.update);
             this.Controls.Add(this.delete);
@@ -272,6 +294,7 @@
             this.MaximumSize = new System.Drawing.Size(1075, 578);
             this.Name = "Form3";
             this.Text = "Form3";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form3_FormClosed);
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.product_grid)).EndInit();
             this.ResumeLayout(false);
@@ -298,5 +321,6 @@
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button update;
         private System.Windows.Forms.DataGridView product_grid;
+        private System.Windows.Forms.Button purchase;
     }
 }
