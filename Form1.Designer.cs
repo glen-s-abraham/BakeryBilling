@@ -31,10 +31,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.report = new System.Windows.Forms.Button();
+            this.bill = new System.Windows.Forms.Button();
+            this.product = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lblfrmname = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,13 +76,12 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.button4, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.button3, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.button2, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.report, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.bill, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.product, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 147);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -91,58 +89,46 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(258, 345);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // button4
+            // report
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(3, 261);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(252, 81);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Report";
-            this.button4.UseVisualStyleBackColor = false;
+            this.report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
+            this.report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.report.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.report.ForeColor = System.Drawing.Color.White;
+            this.report.Location = new System.Drawing.Point(3, 233);
+            this.report.Name = "report";
+            this.report.Size = new System.Drawing.Size(252, 109);
+            this.report.TabIndex = 2;
+            this.report.Text = " Reports";
+            this.report.UseMnemonic = false;
+            this.report.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // bill
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 175);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(252, 80);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Bill";
-            this.button3.UseVisualStyleBackColor = false;
+            this.bill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
+            this.bill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bill.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.bill.ForeColor = System.Drawing.Color.White;
+            this.bill.Location = new System.Drawing.Point(3, 118);
+            this.bill.Name = "bill";
+            this.bill.Size = new System.Drawing.Size(252, 109);
+            this.bill.TabIndex = 1;
+            this.bill.Text = "Bill";
+            this.bill.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // product
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(3, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(252, 80);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Stock";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(252, 80);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Products";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.product.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(32)))), ((int)(((byte)(88)))));
+            this.product.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.product.Font = new System.Drawing.Font("Arial", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.product.ForeColor = System.Drawing.Color.White;
+            this.product.Location = new System.Drawing.Point(3, 3);
+            this.product.Name = "product";
+            this.product.Size = new System.Drawing.Size(252, 109);
+            this.product.TabIndex = 0;
+            this.product.Text = "Products";
+            this.product.UseVisualStyleBackColor = false;
+            this.product.Click += new System.EventHandler(this.product_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -180,6 +166,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1068, 573);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // frmMain
             // 
@@ -191,6 +178,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StoreManagement";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -204,14 +192,13 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lblfrmname;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button report;
+        private System.Windows.Forms.Button bill;
+        private System.Windows.Forms.Button product;
     }
 }
 

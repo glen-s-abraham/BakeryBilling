@@ -103,9 +103,10 @@
             // 
             // mrp
             // 
+            this.mrp.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mrp.Location = new System.Drawing.Point(345, 21);
             this.mrp.Name = "mrp";
-            this.mrp.Size = new System.Drawing.Size(158, 20);
+            this.mrp.Size = new System.Drawing.Size(158, 35);
             this.mrp.TabIndex = 2;
             this.mrp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mrp_KeyPress);
             // 
@@ -121,44 +122,49 @@
             // 
             // pname
             // 
+            this.pname.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.pname.FormattingEnabled = true;
             this.pname.Location = new System.Drawing.Point(68, 23);
             this.pname.Name = "pname";
-            this.pname.Size = new System.Drawing.Size(158, 21);
+            this.pname.Size = new System.Drawing.Size(158, 35);
             this.pname.TabIndex = 1;
             this.pname.SelectedIndexChanged += new System.EventHandler(this.pname_SelectedIndexChanged);
             this.pname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pname_KeyPress);
             // 
             // cprice
             // 
+            this.cprice.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.cprice.Location = new System.Drawing.Point(609, 21);
             this.cprice.Name = "cprice";
-            this.cprice.Size = new System.Drawing.Size(158, 20);
+            this.cprice.Size = new System.Drawing.Size(158, 35);
             this.cprice.TabIndex = 3;
             this.cprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cprice_KeyPress);
             // 
             // sprice
             // 
+            this.sprice.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.sprice.Location = new System.Drawing.Point(68, 63);
             this.sprice.Name = "sprice";
-            this.sprice.Size = new System.Drawing.Size(158, 20);
+            this.sprice.Size = new System.Drawing.Size(158, 35);
             this.sprice.TabIndex = 4;
             this.sprice.TextChanged += new System.EventHandler(this.sprice_TextChanged);
             this.sprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sprice_KeyPress);
             // 
             // qty
             // 
+            this.qty.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.qty.Location = new System.Drawing.Point(345, 62);
             this.qty.Name = "qty";
-            this.qty.Size = new System.Drawing.Size(158, 20);
+            this.qty.Size = new System.Drawing.Size(158, 35);
             this.qty.TabIndex = 5;
             this.qty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qty_KeyPress);
             // 
             // expdate
             // 
+            this.expdate.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.expdate.Location = new System.Drawing.Point(609, 61);
             this.expdate.Name = "expdate";
-            this.expdate.Size = new System.Drawing.Size(158, 20);
+            this.expdate.Size = new System.Drawing.Size(158, 35);
             this.expdate.TabIndex = 6;
             // 
             // reset
