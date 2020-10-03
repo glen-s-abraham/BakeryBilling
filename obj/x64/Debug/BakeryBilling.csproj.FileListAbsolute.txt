@@ -19,3 +19,4 @@ C:\Users\Glen\source\repos\BakeryBilling\obj\x64\Debug\BakeryBilling.csproj.Core
 C:\Users\Glen\source\repos\BakeryBilling\obj\x64\Debug\BakeryBilling.csproj.CopyComplete
 C:\Users\Glen\source\repos\BakeryBilling\obj\x64\Debug\BakeryBilling.exe
 C:\Users\Glen\source\repos\BakeryBilling\obj\x64\Debug\BakeryBilling.pdb
+C:\Users\Glen\source\repos\BakeryBilling\obj\x64\Debug\BakeryBilling.csprojAssemblyReference.cache
