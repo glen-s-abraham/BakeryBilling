@@ -16,11 +16,9 @@ namespace BakeryBilling
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new Form3());
-=======
+
             Application.Run(new Form5());
->>>>>>> master
+
         }
     }
 }
