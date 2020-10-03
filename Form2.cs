@@ -238,7 +238,7 @@ namespace BakeryBilling
 
                     foreach (Items item in itemList)
                     {
-                        query = "INSERT INTO BILLED_ITEMS(BILL_ID,ITEM_NAME,BILL_MRP,BILL_SPRICE,BILL_QTY) VALUES(" + billid + ",'" + item.name + "'," + item.tot_mrp.ToString() + "," + item.tot_sprice.ToString() + "," + item.qty.ToString() + ")";
+                        query = "INSERT INTO BILLED_ITEMS(BILL_ID,ITEM_ID,ITEM_NAME,BILL_MRP,BILL_SPRICE,BILL_QTY) VALUES(" + billid + ","+item.id+",'" + item.name + "'," + item.tot_mrp.ToString() + "," + item.tot_sprice.ToString() + "," + item.qty.ToString() + ")";
                         billCmd = new OleDbCommand(query, conn);
                         billAdapter = new OleDbDataAdapter();
                         billAdapter.InsertCommand = billCmd;
