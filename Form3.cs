@@ -108,6 +108,7 @@ namespace BakeryBilling
         private void state_manage()
         {
             ok.Enabled = true;
+            ok.BackColor = Color.FromArgb(229, 32, 88);
             reset.Enabled = true;
             pname.Enabled = true;
             qty.Enabled = true;
@@ -119,6 +120,7 @@ namespace BakeryBilling
         private void state_manage1()
         {
             ok.Enabled = true;
+            ok.BackColor = Color.FromArgb(229, 32, 88);
             reset.Enabled = true;
             pname.Enabled = true;
             cprice.Enabled = false;
@@ -137,6 +139,7 @@ namespace BakeryBilling
         }
         private void grid_view()
         {
+            product_grid.Font = new Font("Arial", 16);
             try
             { DataSet productset = new DataSet();
                 string query = "SELECT * FROM PRODUCTS ORDER BY(ID) DESC";
@@ -160,7 +163,7 @@ namespace BakeryBilling
                 {
                     foreach(DataRow dr in table.Rows)
                     {
-                        producttable.Rows.Add(i, dr["P_NAME"], dr["QTY"], dr["MRP"], dr["SPRICE"], dr["CPRICE"], dr["CUR_EXP_DATE"]);
+                        producttable.Rows.Add(i, dr["P_NAME"], dr["MRP"], dr["QTY"], dr["SPRICE"], dr["CPRICE"], dr["CUR_EXP_DATE"]);
                         i++;
                     }
                 }
@@ -201,7 +204,10 @@ namespace BakeryBilling
                 pname.DataSource = products.Tables[0];
                 pname.ValueMember = "ID";
                 pname.DisplayMember = "P_NAME";
+                pname.AutoCompleteMode = AutoCompleteMode.Suggest;
                 pname.AutoCompleteSource = AutoCompleteSource.ListItems;
+                
+               
 
 
 
@@ -415,6 +421,11 @@ namespace BakeryBilling
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             conn.Close();
+        }
+
+        private void product_grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

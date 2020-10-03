@@ -10,35 +10,49 @@ using System.Windows.Forms;
 
 namespace BakeryBilling
 {
-   
-
-    
     public partial class frmMain : Form
     {
-       // var obj = null;
+        Form obj = null;
         public frmMain()
         {
             InitializeComponent();
         }
-
-       
-
-        private void frmMain_Load(object sender, EventArgs e)
+        private void render_form(Form frm)
         {
-
-        }
-
-        private void product_Click(object sender, EventArgs e)
-        {
-           /* if(obj!=null)
+            if (obj != null)
             {
                 obj.Close();
-
+                obj.Dispose();
             }
-            obj = new Form2();*/
+            obj = frm;
+            obj.TopLevel = false;
+            obj.AutoScroll = true;
+            obj.FormBorderStyle = FormBorderStyle.None;
+            frmpanel.Controls.Add(obj);
+            obj.Show();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            render_form(new Form3());
+            lblfrmname.Text = "Products";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            render_form(new frmBill());
+            lblfrmname.Text = "Bill";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            render_form(new Form5());
+            lblfrmname.Text = "Reprort";
+        }
+
+        private void frmpanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

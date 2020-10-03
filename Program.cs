@@ -17,7 +17,11 @@ namespace BakeryBilling
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new frmBill());
+
+           // Application.Run(new frmBill());
+
+            Application.Run(new frmMain());
+
 
         }
     }

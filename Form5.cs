@@ -137,6 +137,7 @@ namespace BakeryBilling
 
         public void total()
         {
+            dataGridView1.Font = new Font("Arial", 16);
             int sum = 0;
             double mrp = 0.0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -185,8 +186,8 @@ namespace BakeryBilling
 
             if (comboBox1.SelectedIndex==4)
             {
-                groupBox1.Enabled = true;
-                groupBox1.Visible = true;
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
                 button1.Visible = false;
                 button2.Visible = false;
                 button4.Visible = true;
@@ -247,8 +248,9 @@ namespace BakeryBilling
             comboBox2.Items.Add("OFF STOCK");
             comboBox2.SelectedIndex = 0;
             comboBox1.SelectedIndex = 0;
-            groupBox1.Visible = true;
-            groupBox1.Enabled = false;
+           
+            dateTimePicker1.Enabled = false;
+            dateTimePicker2.Enabled = false;
             button4.Visible = false;
 
         }
