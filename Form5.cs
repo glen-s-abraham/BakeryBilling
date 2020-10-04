@@ -25,15 +25,18 @@ namespace BakeryBilling
         int flag = 0;
         public void grid_view(string query)
         {
-            dateTimePicker1.Value = start_date;
-            dateTimePicker2.Value = end_date;
+            if (comboBox1.SelectedIndex != 4)
+            {
+                dateTimePicker1.Value = start_date;
+                dateTimePicker2.Value = end_date;
+            }
             if(flag==1)
             {
                 int id = 0;
                 query = "SELECT ITEM_ID AS PRODUCT_ID,ITEM_NAME AS PRODUCT_NAME,SUM(BILL_QTY) AS SOLD_QTY,SUM(BILL_SPRICE) AS TOTAL_AMOUNT  FROM BILLED_ITEMS INNER JOIN BILLS ON BILLED_ITEMS.BILL_ID=BILLS.ID WHERE B_DATE  >  #" + start_date + "#  AND B_DATE < #" + end_date + "# AND  ITEM_ID=" + id + "  GROUP BY ITEM_NAME,ITEM_ID";
 
             }
-
+             
             //conn.Open();
             OleDbConnection conn = new OleDbConnection(connString);
             OleDbCommand grid_cmd = new OleDbCommand(query, conn);
@@ -199,6 +202,7 @@ namespace BakeryBilling
 
                 button1.Visible = true;
                 button2.Visible = true;
+                button4.Visible = false;
 
                 end_date = DateTime.Now;
                 start_date = end_date.AddDays(-7);
@@ -210,6 +214,7 @@ namespace BakeryBilling
             {
                 button1.Visible = true;
                 button2.Visible = true;
+                button4.Visible = false;
                  end_date = DateTime.Now;
                 start_date = end_date.AddDays(-30);
                 query1 = "SELECT PRODUCTS.ID AS PRODUCT_ID,P_NAME AS PRODUCT_NAME,SUM(BILL_QTY) AS SOLD_QUANTITY,SUM(QTY) AS ON_STOCK,SUM(SPRICE) AS SRP FROM ((PRODUCTS INNER JOIN BILLED_ITEMS ON PRODUCTS.ID=BILLED_ITEMS.ITEM_ID) INNER JOIN BILLS ON BILLED_ITEMS.BILL_ID=BILLS.ID)WHERE B_DATE >  #" + start_date + "#  AND B_DATE < #" + end_date + "# GROUP BY PRODUCTS.P_NAME,PRODUCTS.ID  ";
@@ -219,6 +224,7 @@ namespace BakeryBilling
             {
                 button1.Visible = true;
                 button2.Visible = true;
+                button4.Visible = false;
                  end_date = DateTime.Now;
                 start_date = end_date.AddDays(-1);
                 query1 = "SELECT PRODUCTS.ID AS PRODUCT_ID,P_NAME AS PRODUCT_NAME,SUM(BILL_QTY) AS SOLD_QUANTITY,SUM(QTY) AS ON_STOCK,SUM(SPRICE) AS SRP FROM ((PRODUCTS INNER JOIN BILLED_ITEMS ON PRODUCTS.ID=BILLED_ITEMS.ITEM_ID) INNER JOIN BILLS ON BILLED_ITEMS.BILL_ID=BILLS.ID)WHERE B_DATE >  #" + start_date + "#  AND B_DATE < #" + end_date + "# GROUP BY PRODUCTS.P_NAME,PRODUCTS.ID ";
@@ -332,7 +338,7 @@ namespace BakeryBilling
             Font H1 = new Font("Arial", 28);
             Font H2 = new Font("Arial", 16);
             Font H3 = new Font("Arial", 12);
-            e.Graphics.DrawString("Bakery Name", H1, Brushes.Black, new Point(x + 280, y));
+            e.Graphics.DrawString("LEOS BAKERY & PROVISION STORE ", H1, Brushes.Black, new Point(x + 280, y));
             y = y + 50;
             e.Graphics.DrawString(comboBox2.Text.ToString()+"  "+ comboBox1.Text.ToString() +" REPORT", H2, Brushes.Black, new Point(x, y));
             e.Graphics.DrawString( "DATE :" + DateTime.Now, H2, Brushes.Black, new Point(x+400, y));
@@ -496,6 +502,11 @@ namespace BakeryBilling
             {
                 flag = 1;
             }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

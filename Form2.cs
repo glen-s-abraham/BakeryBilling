@@ -145,7 +145,7 @@ namespace BakeryBilling
             Font H1 = new Font("Arial", 28);
             Font H2 = new Font("Arial", 16);
             Font H3 = new Font("Arial", 12);
-            e.Graphics.DrawString("Bakery Name",H1,Brushes.Black,new Point(x+280,y));
+            e.Graphics.DrawString("LEOS BAKERY & PROVISION STORE ",H1,Brushes.Black,new Point(x+280,y));
             y = y + 50;
             e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
             y = y + 10;
@@ -340,6 +340,11 @@ namespace BakeryBilling
         {
             conn.Close();
             conn.Dispose();
+        }
+
+        private void txt_qty_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void cmb_items_TextChanged(object sender, EventArgs e)
