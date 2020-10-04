@@ -49,7 +49,7 @@ namespace BakeryBilling
         private void button3_Click(object sender, EventArgs e)
         {
             render_form(new Form5());
-            lblfrmname.Text = "Reprort";
+            lblfrmname.Text = "Report";
         }
 
         private void frmpanel_Paint(object sender, PaintEventArgs e)

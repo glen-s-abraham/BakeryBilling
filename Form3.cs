@@ -163,7 +163,7 @@ namespace BakeryBilling
                 {
                     foreach(DataRow dr in table.Rows)
                     {
-                        producttable.Rows.Add(i, dr["P_NAME"], dr["MRP"], dr["QTY"], dr["SPRICE"], dr["CPRICE"], dr["CUR_EXP_DATE"]);
+                        producttable.Rows.Add(i, dr["P_NAME"], dr["MRP"], dr["SPRICE"], dr["CPRICE"], dr["QTY"], dr["CUR_EXP_DATE"]);
                         i++;
                     }
                 }
@@ -367,6 +367,7 @@ namespace BakeryBilling
                     }
 
                 }
+                
                 refresh();
                 pname_combo();
                 grid_view();
