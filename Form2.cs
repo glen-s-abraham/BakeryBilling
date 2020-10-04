@@ -145,7 +145,7 @@ namespace BakeryBilling
             Font H1 = new Font("Arial", 28);
             Font H2 = new Font("Arial", 16);
             Font H3 = new Font("Arial", 12);
-            e.Graphics.DrawString("LEOS BAKERY & PROVISION STORE ",H1,Brushes.Black,new Point(x+280,y));
+            e.Graphics.DrawString("LEOS BAKERY & PROVISION STORE ",H1,Brushes.Black,new Point(x+80,y));
             y = y + 50;
             e.Graphics.DrawLine(pen, new Point(0, y), new Point(1000, y));
             y = y + 10;
@@ -354,7 +354,8 @@ namespace BakeryBilling
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (cmb_items.Text == "" || txt_mrp.Text == "" || txt_qty.Text == "" || txt_sprice.Text == ""){
+            if (cmb_items.Text == "" || txt_mrp.Text == "" || txt_qty.Text == "" || txt_sprice.Text == "")
+            {
                 MessageBox.Show("Enter all Details");
                 return;
             }
@@ -364,7 +365,49 @@ namespace BakeryBilling
             double mrp = double.Parse(txt_mrp.Text);
             double sprice = double.Parse(txt_sprice.Text);
             double qty = double.Parse(txt_qty.Text);
-            itemList.Add(new Items() { id = pid, name = pname, qty = qty, mrp=mrp,sprice=sprice,tot_mrp = qty*mrp, tot_sprice = qty*sprice });
+
+            //QTY Validations
+            string query = "SELECT QTY FROM PRODUCTS WHERE ID=" + pid + " AND P_NAME='" + pname + "'";
+
+            try
+            {
+                productCmd = new OleDbCommand(query, conn);
+                productAdapter = new OleDbDataAdapter();
+                productTable = new DataTable();
+                productAdapter.SelectCommand = productCmd;
+                productAdapter.Fill(productTable);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            if (productTable.Rows.Count > 0)
+            {
+                int sqty = 0;
+                foreach (DataRow row in productTable.Rows)
+                {
+                    sqty = int.Parse(row["QTY"].ToString());
+                }
+
+                if (qty > sqty)
+                {
+                    MessageBox.Show("You have entered a billing QTY which is Greater than The QTY in Stock BILL_QTY:" + qty.ToString() + "STOCK_QTY:" + sqty.ToString());
+                    txt_id.Text = "0";
+                    txt_mrp.Text = "";
+                    txt_sprice.Text = "";
+                    txt_qty.Text = "";
+                    cmb_items.Focus();
+                    return;
+
+                }
+            }
+            productAdapter.Dispose();
+            productCmd.Dispose();
+            productTable.Dispose();
+
+            itemList.Add(new Items() { id = pid, name = pname, qty = qty, mrp = mrp, sprice = sprice, tot_mrp = qty * mrp, tot_sprice = qty * sprice });
             grdItems.DataSource = itemList;
             update_totals();
             txt_id.Text = "0";

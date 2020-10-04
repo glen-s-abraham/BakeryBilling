@@ -42,3 +42,7 @@ C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\x64\Debug\BakeryBilling.csproj.Co
 C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\x64\Debug\BakeryBilling.csproj.CopyComplete
 C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\x64\Debug\BakeryBilling.exe
 C:\Users\ASUS\Desktop\bakery\BakeryBilling\obj\x64\Debug\BakeryBilling.pdb
+F:\BAKERYBILLING\BakeryBilling\bin\x64\Debug\BakeryBilling.exe.manifest
+F:\BAKERYBILLING\BakeryBilling\bin\x64\Debug\BakeryBilling.application
+F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.exe.manifest
+F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.application

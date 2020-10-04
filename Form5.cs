@@ -338,7 +338,7 @@ namespace BakeryBilling
             Font H1 = new Font("Arial", 28);
             Font H2 = new Font("Arial", 16);
             Font H3 = new Font("Arial", 12);
-            e.Graphics.DrawString("LEOS BAKERY & PROVISION STORE ", H1, Brushes.Black, new Point(x + 280, y));
+            e.Graphics.DrawString("LEOS BAKERY & PROVISION STORE ", H1, Brushes.Black, new Point(x + 80, y));
             y = y + 50;
             e.Graphics.DrawString(comboBox2.Text.ToString()+"  "+ comboBox1.Text.ToString() +" REPORT", H2, Brushes.Black, new Point(x, y));
             e.Graphics.DrawString( "DATE :" + DateTime.Now, H2, Brushes.Black, new Point(x+400, y));
