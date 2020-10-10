@@ -12,7 +12,6 @@ F:\BAKERYBILLING\BakeryBilling\bin\x64\Debug\System.Security.Principal.Windows.x
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.csprojAssemblyReference.cache
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.frmMain.resources
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.Form3.resources
-F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.frmBill.resources
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.Form5.resources
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.Properties.Resources.resources
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.csproj.GenerateResource.cache
@@ -46,3 +45,4 @@ F:\BAKERYBILLING\BakeryBilling\bin\x64\Debug\BakeryBilling.exe.manifest
 F:\BAKERYBILLING\BakeryBilling\bin\x64\Debug\BakeryBilling.application
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.exe.manifest
 F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.application
+F:\BAKERYBILLING\BakeryBilling\obj\x64\Debug\BakeryBilling.frmBill.resources
